@@ -1,0 +1,11 @@
+digraph G {
+    0 -> 7 [ label="8" arrowhead="none" ];
+    7 -> 6 [ label="1" arrowhead="none" ];
+    6 -> 8 [ label="6" arrowhead="none" ];
+    8 -> 2 [ label="2" arrowhead="none" ];
+    2 -> 3 [ label="7" arrowhead="none" ];
+    3 -> 5 [ label="14" arrowhead="none" ];
+    5 -> 4 [ label="10" arrowhead="none" ];
+    2 -> 1 [ label="8" arrowhead="none" ];
+B[label="56"];
+}

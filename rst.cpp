@@ -1,4 +1,5 @@
 #include <iostream>
+#include <stdio.h>
 #include <stdlib.h>
 #include <cstring>
 #include <time.h>
@@ -26,13 +27,13 @@ int get_rand(int left, int right){
 	return left + rand() % (right-left+1);
 }
 
-void dfs(int node_index){
+void dfs(int start){
 	// cout << node_index << endl;
-	node[node_index] = USED;
+	node[start] = USED;
 	int tmp[MAXN];
 	int top_index = -1;
 	for (int i = 0; i < n; i++){
-		if ( NOT_USED == node[i] && 0 != g[node_index][i]){
+		if ( NOT_USED == node[i] && 0 != g[start][i]){
 			top_index++;
 			tmp[top_index] = i;
 		}
@@ -51,8 +52,8 @@ void dfs(int node_index){
 		for (int i = 0; i <= top_index; i++){
 			int go_index = tmp[i];
 			if ( NOT_USED == node[go_index]){
-				printf("    %d -> %d [ label=\"%d\" arrowhead=\"none\" ];\n", node_index, go_index, g[node_index][go_index]);
-				weight += g[node_index][go_index];
+				printf("    %d -> %d [ label=\"%d\" arrowhead=\"none\" ];\n", start, go_index, g[start][go_index]);
+				weight += g[start][go_index];
 				dfs(go_index);
 			}
 		}

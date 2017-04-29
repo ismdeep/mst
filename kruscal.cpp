@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string.h>
 #include <queue>
+#include <stdio.h>
 using namespace std;
 
 #define MAXN 1000
@@ -53,9 +54,10 @@ void kruscal () {
 		Edge e = q.top();
 		q.pop();
 		// printf("%d %d : %d\n", e.from, e.to, e.weight);
+		
 		if (find(e.from) != find(e.to)){
+			printf("    %d -> %d [ label=\"%d\" arrowhead=\"none\" ];\n", e.from, e.to, e.weight);
 			weight += e.weight;
-			printf("%d\n", e.weight);
 			mix(e.from, e.to);
 		}
 	}
@@ -74,8 +76,9 @@ int main () {
 		e.weight = w;
 		q.push(e);
 	}
+	printf("digraph G {\n");
 	kruscal();
-	printf("%d\n", weight);
+	printf("}\n");
 	return 0;
 }
 
